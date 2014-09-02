@@ -1,0 +1,15 @@
+<properties>
+<props name="classa" value="com.webo.a.Employee"/>
+<props name="classb" value="com.webo.b.Employee"/>
+<props name="classc" value="com.webo.c.Employee"/>
+<package-scan value "
+</properties>
+
+{
+	'packageScan':'com.webonise.mysuperapp.inclusion'
+}
+<package>
+<props value=""/>
+</package>
+
+com.webonise.mysuperapp.exclusion

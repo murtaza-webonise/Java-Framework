@@ -1,5 +1,8 @@
 package com.webo.test;
 
+import com.webo.annotations.Scope;
+
+@Scope(value="Prototype")
 public class Address {
 
 	private String city;
@@ -7,6 +10,7 @@ public class Address {
 	private String pinCode;
 
 	public Address() {
+		System.out.println("Address");
 
 	}
 

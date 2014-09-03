@@ -1,7 +1,7 @@
 package com.webo.test;
 
-import com.webo.annotations.Autoinit;
-
+import com.webo.annotations.*;
+@Scope
 public class Employee {
 
 	private String name;

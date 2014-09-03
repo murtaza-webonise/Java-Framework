@@ -1,34 +1,30 @@
 import java.util.HashMap;
 import java.util.Map;
 
-
 public class FrameworkFactory {
 
-	Map<String, Object> classMap = new HashMap<String, Object>();
-	
+	Map<Class<?>, Object> classMap = new HashMap<Class<?>, Object>();
+
 	private Object addr;
-	public Object createFactoryClass(Class<?> dumy, String id) {
-		
-		
-		if (!classMap.containsKey(id)) {
-		try {
-		
-			addr = dumy.newInstance();
+
+	public Object createFactoryClass(Class<?> dumy, String scope)
+			throws InstantiationException, IllegalAccessException {
+
+		if (scope.equalsIgnoreCase("Singleton")) {
+			if (!classMap.containsKey(dumy)) {
 				
-			} catch (InstantiationException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (IllegalAccessException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				addr = dumy.newInstance();
+
+				classMap.put(dumy, addr);
+
+				return addr;
+			} else {
+
+				return classMap.containsKey(dumy);
 			}
-			classMap.put(id, addr);
+		} else
 
-			return addr;
-		} else {
-
-			return classMap.get(id);
-		}
+			return dumy.newInstance();
 
 	}
 

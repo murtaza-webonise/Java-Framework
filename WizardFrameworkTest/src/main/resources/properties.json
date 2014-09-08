@@ -1,4 +1,4 @@
 {
-	"package-scan": "com.webo.test",
+	"package-scan": [{"id":"school","value":"com.webo.test.School"}]
        
 }

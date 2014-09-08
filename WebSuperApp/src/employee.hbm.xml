@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.employee.pojo.Employee" table="EMPLOYEE">
+		<id name="id" type="int" column="id">
+			<generator class="assigned" />
+		</id>
+
+		<property name="name">
+			<column name="name" />
+		</property>
+		<property name="mobileNumber">
+			<column name="mbNo" />
+		</property>
+
+		<many-to-one name="address" column="address" cascade="save-update"
+			class="com.address.pojo.Address" not-null="true" />
+
+	</class>
+	<class name="com.address.pojo.Address" table="ADDRESS" lazy="false">
+		<meta attribute="class-description">
+			This class contains the address detail.
+		</meta>
+		<id name="id" type="int" column="id">
+			<generator class="increment" />
+		</id>
+		<property name="state" column="state_name" type="string" />
+		<property name="city" column="city_name" type="string" />
+		<property name="pinCode" column="pin_code" type="string" />
+	</class>
+</hibernate-mapping>

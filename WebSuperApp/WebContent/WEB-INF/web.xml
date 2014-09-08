@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+  <display-name>WebSuperApp</display-name>
+  <servlet>
+    <servlet-name>Employee</servlet-name>
+    <servlet-class>com.employee.pojo.Employee</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>Address</servlet-name>
+    <servlet-class>com.address.pojo.Address</servlet-class>
+  </servlet>
+  <servlet>
+        <servlet-name>ReturnSession</servlet-name>
+        <servlet-class>com.session.manager.ReturnSession</servlet-class>
+    </servlet>
+  <servlet>
+    <servlet-name>EmployeeDao</servlet-name>
+    <servlet-class>com.employee.pojo.EmployeeDao</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>RequestHandler</servlet-name>
+    <servlet-class> com.request.handler.RequestHandler</servlet-class>
+  </servlet>
+ 
+  <servlet>
+    <servlet-name>AddressDao</servlet-name>
+    <servlet-class>com.address.pojo.AddressDao</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Employee</servlet-name>
+    <url-pattern>/Employee</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>Address</servlet-name>
+    <url-pattern>/Address</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>EmployeeDao</servlet-name>
+    <url-pattern>/EmployeeDao</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>RequestHandler</servlet-name>
+    <url-pattern>/RequestHandler</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ReturnSession</servlet-name>
+    <url-pattern>/ReturnSession</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>AddressDao</servlet-name>
+    <url-pattern>/AddressDao</url-pattern>
+  </servlet-mapping>
+  <session-config>
+    <session-timeout>30</session-timeout>
+  </session-config>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+</web-app>

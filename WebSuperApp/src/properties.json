@@ -1,0 +1,6 @@
+{
+	
+	"package-scan": [{"id":"employee","value":"com.employee.pojo.Employee"},{"id":"address","value":"com.address.pojo.Address"}]
+	
+       
+}

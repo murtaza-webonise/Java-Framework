@@ -38,7 +38,7 @@ public class JsonParseTest {
 			for(int i=0; i<lang.size(); i++){
 				System.out.println("The " + i + " element of the array: "+lang.get(i));
 			}
-			Iterator i = lang.iterator();
+			Iterator<?> i = lang.iterator();
 
 			// take each value from the json array separately
 			while (i.hasNext()) {

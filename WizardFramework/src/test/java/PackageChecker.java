@@ -1,4 +1,3 @@
-import java.io.File;
 
 public class PackageChecker {
 	String packageName;

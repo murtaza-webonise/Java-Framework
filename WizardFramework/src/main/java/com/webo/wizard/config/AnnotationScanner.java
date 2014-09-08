@@ -1,3 +1,5 @@
+package com.webo.wizard.config;
+
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -10,23 +12,28 @@ import org.slf4j.LoggerFactory;
 public class AnnotationScanner {
 	public Class<?> dumyObj;
 	static FrameworkFactory ff = new FrameworkFactory();
+	HashClass hc = new HashClass();
 	// private static int counter=0;
 	Object ob = null;
 	String scopeValue;
+	String classId;
 	private static final Logger slf4jLogger = LoggerFactory
 			.getLogger(AnnotationScanner.class);
 
-	public AnnotationScanner(Class<?> dumy) throws InstantiationException,
-			IllegalAccessException {
+	public AnnotationScanner(Class<?> dumy, String classId)
+			throws InstantiationException, IllegalAccessException {
 		dumyObj = dumy;
+		this.classId = classId;
 
 		if (dumyObj.isAnnotationPresent(Scope.class)) {
 
-			ob = (Object) ff.createFactoryClass(dumyObj,
-					dumyObj.getAnnotation(Scope.class).value());
+			ob = ff.createFactoryClass(dumyObj,
+					dumyObj.getAnnotation(Scope.class).value(), classId);
 
-		} else
-			ob = (Object) ff.createFactoryClass(dumyObj, "Prototype");
+		} else {
+
+			ob = ff.createFactoryClass(dumyObj, "Prototype", classId);
+		}
 	}
 
 	public void checkAnnotation() {
@@ -39,19 +46,23 @@ public class AnnotationScanner {
 					// Annotation autoinit =
 					// field.getAnnotation(Autoinit.class);
 
+					classId = hc.retrFromMap(obj2.getSimpleName());
+					// System.out.println(classId);
 					// Autoinit ai = (Autoinit) autoinit;
 					if (obj2.isAnnotationPresent(Scope.class))
 						scopeValue = obj2.getAnnotation(Scope.class).value();
 					else
 						scopeValue = "";
 
-					Object key = (Object) ff.createFactoryClass(obj2,
-							scopeValue);
+					Object key = ff.createFactoryClass(obj2, scopeValue,
+							classId);
 
 					Method method = dumyObj.getMethod(
 							"set" + obj2.getSimpleName(), obj2);
 
 					method.setAccessible(true);
+					// System.out.println("Mei hu murtaza ");
+
 					method.invoke(ob, key);
 
 				} catch (SecurityException e) {
